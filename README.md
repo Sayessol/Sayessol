@@ -1,6 +1,6 @@
 # Hola, soy Sayessol 👋
 
-Construyo software con **[Claude](https://claude.com/claude-code) como copiloto de programación**: yo decido qué hacer y reviso, y las pruebas automáticas son la red de seguridad.
+Estoy **aprendiendo Python** y parto de un nivel básico. Para profundizar, construyo proyectos reales de principio a fin, con **[Claude](https://claude.com/claude-code) como copiloto de programación**: yo decido qué hacer y qué quiero aprender, Claude escribe y explica el código, y las pruebas automáticas son la red de seguridad.
 
 ## Proyecto destacado
 
@@ -8,6 +8,7 @@ Construyo software con **[Claude](https://claude.com/claude-code) como copiloto 
 
 App de escritorio para Windows que **encuentra archivos duplicados y fotos parecidas** y te ayuda a ordenarlos sin riesgo: nunca borra nada, mueve a una cuarentena y todo se puede deshacer.
 
+- Mi proyecto de aprendizaje más completo hasta ahora (nivel de partida: básico)
 - Python · CustomTkinter · Pillow · PyInstaller
 - Duplicados exactos en 3 pasadas (lee un 66 % menos de datos que hashear todo), fotos parecidas con hash perceptual (dHash + BK-tree)
 - 28 pruebas con pytest, 91 % de cobertura del núcleo, CI en GitHub Actions
