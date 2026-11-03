@@ -1,46 +1,72 @@
-# Hi, I'm Nil Ruz Arjona 👋
+# Nil Ruz · Projects
 
-**Flutter & mobile developer based in Barcelona, Spain.**
-I build cross-platform apps (iOS & Android) with Flutter, from Figma designs to App Store and Google Play release.
+Flutter & mobile developer from Barcelona. This is where I show what I build.
+More projects coming soon.
 
-## About me
+---
 
-I have one year of professional experience as a Flutter developer. At **Abalit Technologies** (June 2025 – July 2026) I built and shipped a cross-platform social app from scratch:
+## 🗂️ Buscador de duplicados
 
-- 70+ screens implemented from Figma designs and 100+ REST endpoints integrated
-- Real-time geolocation (Google Maps SDK) and WebSocket chat between users
-- Social login (Google, Apple, Facebook), SMS verification and AI-powered identity verification through the OpenAI API
-- In-app purchases and subscriptions, plus multilingual push notifications (ES/CA/EN)
-- Full release cycle on App Store Connect and Google Play Console
-- Clean Architecture with Riverpod and SOLID principles, working in Agile/Scrum sprints with a PHP/Laravel backend team
+**A Windows desktop app that finds exact duplicate files and visually similar photos, and cleans them up without ever touching your originals.**
 
-Before moving into software development, I spent over a decade leading teams in hospitality. That's where I learned to take ownership, work under pressure and deliver reliably.
+[![Repo](https://img.shields.io/badge/GitHub-buscador--de--duplicados-181717?logo=github)](https://github.com/Sayessol/buscador-de-duplicados)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-128%20passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-## What I work with
+### The problem
+Years of backups and phone transfers leave folders full of the same files and near-identical photos. Most cleaners delete things straight away, which is risky. This one is built around one rule: **nothing is deleted without confirmation, and every move can be undone.**
 
-| Area | Tools |
+### What it does
+| Tab | What it does |
 |---|---|
-| Mobile | Flutter, Dart, Material Design |
-| Architecture & state | Clean Architecture, Riverpod, SOLID |
-| Backend & APIs | REST, WebSockets, Firebase (Auth, FCM, Firestore), MySQL, Postman |
-| Product & release | Figma handoff, in-app purchases, App Store Connect, Google Play Console |
-| Also used | Unity (2D, AR and VR mini-games), Odoo ERP customization (UI and code), Java, Python, SQL, C |
-| Workflow | Git, Android Studio, VS Code, AI tools to speed up development |
+| **Exact duplicates** | Finds byte-identical files regardless of name, shows previews and picks a main copy. |
+| **Similar photos** | Groups recompressed, downscaled or filtered versions of the same photo and keeps the best quality one. |
+| **Gather images** | Moves or copies photos scattered across subfolders into a single folder. |
 
-## What motivates me
+Also: simple and advanced modes, history with undo, image viewer with zoom, light/dark/auto theme, filters by category, extension, name, folder and size.
 
-- **Product ownership.** I like taking a feature from idea to production and seeing real people use it.
-- **Clean, maintainable code.** I care about architecture and quality, not only about making things work.
-- **AI in mobile apps.** I enjoy integrating AI models into apps through APIs, and I'm keen to go deeper.
-- **Learning fast in small, ambitious teams** where I can grow and contribute from day one.
+### How it works
+- **Exact duplicates in three passes.** Group by size, then hash the first 64 KB (BLAKE2b), then hash the full file only for the remaining candidates. In my benchmark it read about **34% of the data** that hashing everything would, and found the same 386 groups.
+- **Similar photos with perceptual hashing.** A 64-bit dHash plus a 4×4 colour signature, a BK-tree over Hamming distance to avoid comparing every pair, and Union-Find to link groups.
+- **Responsive UI.** Heavy work runs in a background thread and talks to the interface through a queue, so the window never freezes.
+- **Clean separation.** Logic lives in `core/`, the interface in `ui/`.
 
-## Education
+### Quality
+- 128 automated tests with pytest: **93% coverage on the core**, 79% on the interface
+- Linting with ruff and type checking with mypy
+- GitHub Actions runs the tests on every push
+- Distributed as a single `.exe` and a portable ZIP, built with PyInstaller
 
-- Higher Technician in Cross-Platform App Development (DAM), Universitat Oberta de Catalunya (2025)
-- AI Architecture Intensive, BIGschool (2026)
+### Known limits
+Windows only. It does not detect cropped or rotated photos, and it cannot read phones connected over USB (MTP/PTP).
 
-## Currently
+### Stack
+`Python 3.12` `CustomTkinter` `Pillow` `pytest` `ruff` `mypy` `GitHub Actions` `PyInstaller`
 
-🔍 Looking for a full-time Flutter / mobile developer role, remote or hybrid in Barcelona.
+### Try it
+Download the `.exe` or the portable ZIP from [Releases](https://github.com/Sayessol/buscador-de-duplicados/releases), or run it from source:
+```bash
+pip install -r requirements.txt
+python app.py
+```
 
-🌍 Spanish and Catalan (native), English (B2, used daily at work)
+### How I built it
+It started as a 150-line script and grew into a tested, packaged app. I built it with Claude as a coding assistant: I defined the requirements, the safety rules and the architecture, and used AI to speed up the implementation, with tests to check the result.
+
+---
+
+## 🔜 Coming next
+
+- 🎮 Unity mini-games (2D, AR and VR)
+- 📱 Flutter showcase app (Clean Architecture + Riverpod)
+
+---
+
+## 🛠️ Tech I work with
+
+`Flutter` `Dart` `Riverpod` `Clean Architecture` `REST` `Firebase` `WebSockets` `Python` `Unity` `Java` `SQL` `Git`
+
+## 📬 Contact
+
+[LinkedIn](https://www.linkedin.com/in/nilruz) · nilruznra@gmail.com
